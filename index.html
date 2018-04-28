@@ -7,15 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>体脂检测</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./plugin/layer/need/layer.css">
     <style>
+        body {
+            background-color: rgb(242, 242, 242);
+        }
+        
         .container {
             font-size: 0.14rem;
         }
         
         .top {
             width: 100%;
-            height: 1.6rem;
-            background: url("./imgs/banner.jpg");
+            height: 1.5rem;
+            background: url("./imgs/bg.jpg");
             background-color: #000;
             background-position: left bottom;
             background-size: 100%;
@@ -24,17 +29,206 @@
             text-align: center;
         }
         
-        .avatar img {
+        .avatar {
             width: 0.65rem;
             height: 0.65rem;
             border-radius: 50%;
-            margin-top: 0.3rem;
+            margin-top: 0.18rem;
+            border: 2px solid #f2f2f2;
         }
         
         .name {
-            margin-top: 0.1rem;
+            margin-top: 0.08rem;
             font-weight: 700;
             font-size: 0.16rem;
+            line-height: 1.5;
+        }
+        
+        .main {
+            text-align: center;
+        }
+        
+        .bg-white {
+            background-color: #fff;
+            padding: 0.1rem 0;
+        }
+        
+        .title {
+            font-size: 0.18rem;
+            line-height: 1.5;
+            text-align: center;
+            margin: 0 auto 0.05rem;
+            border: 1px solid #2EB872;
+            color: #2EB872;
+            border-radius: 0.2rem;
+            display: block;
+            width: 1.5rem;
+        }
+        
+        .progress {
+            width: 100%;
+            height: 0.22rem;
+            line-height: 0.22rem;
+            position: relative;
+            margin-top: 0.04rem;
+        }
+        
+        .progress span {
+            display: block;
+            width: 0.18rem;
+            height: 0.18rem;
+            line-height: 0.18rem;
+            border-radius: 50%;
+            background-color: #2EB872;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .progress span:nth-of-type(1) {
+            position: absolute;
+            left: 0.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .progress span:nth-of-type(2) {
+            width: 0.22rem;
+            height: 0.22rem;
+            line-height: 0.22rem;
+            font-size: 0.16rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+        
+        .progress span:nth-of-type(3) {
+            position: absolute;
+            right: 0.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .progress p {
+            width: 100%;
+            height: 0.05rem;
+            background-color: #2EB872;
+            top: 50%;
+            transform: translateY(-50%);
+            position: relative;
+        }
+        
+        .data-box {
+            width: 100%;
+            text-align: center;
+            padding: 0.1rem 0;
+            box-sizing: border-box;
+        }
+        
+        .date {
+            margin-bottom: 0.05rem;
+        }
+        
+        .result {
+            margin-top: 0.05rem;
+            font-size: 0.16rem;
+            color: #fff;
+            padding: 0.04rem 0.15rem;
+            background-color: #2EB872
+        }
+        
+        .score {
+            width: 0.9rem;
+            height: 0.9rem;
+            border: 0.1rem solid #FA4659;
+            border-radius: 50%;
+            margin: 0.1rem auto;
+            padding-top: 0.05rem;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        
+        .score p:nth-of-type(1) {
+            font-size: 0.12rem;
+            line-height: 1.5;
+        }
+        
+        .score-data {
+            font-weight: 700;
+            color: #2EB872;
+            font-size: 0.32rem;
+        }
+        
+        .percent-data {
+            width: 95%;
+            margin: 0 auto;
+            text-align: left;
+            /* margin-bottom: 0.03rem; */
+        }
+        
+        .percent-data .p-title {
+            font-size: 0.14rem;
+            text-align: left;
+            line-height: 1.5;
+        }
+        
+        .move-div {
+            width: .5rem;
+            position: relative;
+        }
+        
+        .move-div i {
+            font-size: .12rem;
+            color: #2EB872;
+            font-style: normal;
+        }
+        
+        .body-fat-pct {
+            font-weight: 700;
+            font-size: 0.2rem;
+        }
+        
+        .triangle {
+            width: 0;
+            height: 0;
+            border: 0.1rem solid transparent;
+            border-top: 0.2rem solid rgb(0, 157, 217);
+        }
+        
+        .reference {
+            width: 100%;
+            height: 0.35rem;
+            text-align: center;
+            line-height: 0.35rem;
+            border-radius: 0.3rem;
+            position: relative;
+            top: -0.06rem;
+            box-sizing: border-box;
+        }
+        
+        .reference p {
+            width: 20%;
+            color: #fff;
+        }
+        
+        .reference p:nth-of-type(1) {
+            background-color: #E8751A;
+        }
+        
+        .reference p:nth-of-type(2) {
+            background-color: #FDA403;
+        }
+        
+        .reference p:nth-of-type(3) {
+            background-color: rgb(0, 176, 80);
+        }
+        
+        .reference p:nth-of-type(4) {
+            background-color: #DE3C3C;
+        }
+        
+        .reference p:nth-of-type(5) {
+            background-color: #C00000;
         }
     </style>
 </head>
@@ -42,13 +236,114 @@
 <body>
     <div class="container">
         <div class="top">
-            <div class="avatar"><img src="./imgs/300.jpg" alt="avatar"></div>
+            <img class="avatar" src="./imgs/300.jpg" alt="avatar">
             <p class="name">何国峰</p>
             <p class="department">互联网+技术部</p>
         </div>
-
+        <div class="main clearfix">
+            <div class="bg-white">
+                <span class="title">快速体脂检测</span>
+                <div class="progress clearfix">
+                    <p></p>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+            </div>
+            <div class="data-box">
+                <p class="date" id="date">2017年11月18日 09:13</p>
+                <span class="result">标准健将型，继续加油!</span>
+                <div class="score">
+                    <p>总分</p>
+                    <p class="score-data" id="scoreData"></p>
+                </div>
+                <div class="percent-data">
+                    <p class="p-title">体脂率</p>
+                    <div class="move-div" id="fatMove">
+                        <i><span class="body-fat-pct" id="bodyFatPct"></span>%</i>
+                        <div class="triangle"></div>
+                    </div>
+                    <div class="reference clearfix">
+                        <p class="fl">偏瘦</p>
+                        <p class="fl">运动型</p>
+                        <p class="fl">标准</p>
+                        <p class="fl">一般</p>
+                        <p class="fl">偏胖</p>
+                    </div>
+                </div>
+                <div class="percent-data">
+                    <p class="p-title">肌活力</p>
+                    <div class="move-div" id="muscleMove">
+                        <i><span class="body-fat-pct" id="musclePct"></span></i>
+                        <div class="triangle"></div>
+                    </div>
+                    <div class="reference clearfix">
+                        <p class="fl">偏瘦</p>
+                        <p class="fl">运动型</p>
+                        <p class="fl">标准</p>
+                        <p class="fl">一般</p>
+                        <p class="fl">偏胖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="./js/common.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./plugin/layer/layer.js"></script>
+<script>
+    //loading带文字 
+    layer.open({
+        index: 1,
+        type: 2,
+        content: '加载中',
+        shadeClose: false,
+    });
+    //设置每个值为0
+    $("#scoreData").text(0);
+    $("#bodyFatPct").text(0);
+    $("#musclePct").text(0);
+    $(document).ready(function() {
+            $.ajax({
+                type: "get",
+                url: "https://www.easy-mock.com/mock/5ae42a932bfb1a7e1d60f66a/qs/bodyFat"
+            }).done(res => {
+                layer.closeAll()
+                console.log(res.data);
+                let bodyFatPct = res.data.bodyFatPct;
+                let musclePct = res.data.musclePct;
+                let scoreData = res.data.scoreData;
+                $("#fatMove").animate({
+                        left: $(window).width() * 0.95 * bodyFatPct / 100 - 10
+                    },
+                    1200
+                );
+                $("#muscleMove").animate({
+                    left: $(window).width() * 0.95 * musclePct / 100 - 10
+                }, 1200);
+
+                numPlus("#scoreData", scoreData, 1500)
+                numPlus("#bodyFatPct", bodyFatPct, 1200)
+                numPlus("#musclePct", musclePct, 1200)
+
+            }).fail(err => {
+                console.log(err)
+            });
+        })
+        //数字自增长动画
+    function numPlus(id, data, time) {
+        let delay = parseInt(time / data);
+        let timer = setInterval(num, delay)
+
+        function num() {
+            if (parseInt($(id).text()) >= data) {
+                clearInterval(timer)
+            } else {
+                $(id).text(parseInt($(id).text()) + 1)
+            }
+        }
+    }
+</script>
 
 </html>
